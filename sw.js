@@ -7,6 +7,9 @@
 
 var CACHE_NAME = 'v1';
 var urlsToCache = [
+    'https://ethanwadsworth.github.io/Lab7/',
+    'https://ethanwadsworth.github.io/Lab7/scripts/router.js',
+    'https://ethanwadsworth.github.io/Lab7/scripts/script.js',
     'https://ethanwadsworth.github.io/Lab7/sw.js',
     'https://cse110lab6.herokuapp.com/entries'
 ];
