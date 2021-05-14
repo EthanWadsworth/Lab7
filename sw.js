@@ -7,7 +7,9 @@
 
 var CACHE_NAME = 'v1';
 var urlsToCache = [
-  '/',
+  '/index.html',
+  '/settings.svg',
+  '/style.css',
   '/components',
   '/images',
   '/scripts',
