@@ -7,7 +7,7 @@
 
 var CACHE_NAME = 'v1';
 var urlsToCache = [
-    '/scripts',
+    './scripts',
     'https://cse110lab6.herokuapp.com/entries'
 ];
 
