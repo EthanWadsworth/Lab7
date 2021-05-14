@@ -6,15 +6,7 @@
 //   - One for fetch requests
 
 var CACHE_NAME = 'v1';
-var urlsToCache = [
-  '/index.html',
-  '/settings.svg',
-  '/style.css',
-  '/components',
-  '/images',
-  '/scripts',
-  'https://cse110lab6.herokuapp.com/entries'
-];
+var urlsToCache = [];
 
 self.addEventListener('install', function(event) {
   // Perform install steps
