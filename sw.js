@@ -7,10 +7,10 @@
 
 var CACHE_NAME = 'v1';
 var urlsToCache = [
-  './',
-  './components',
-  './images',
-  './scripts',
+  '/',
+  '/components',
+  '/images',
+  '/scripts',
   'https://cse110lab6.herokuapp.com/entries'
 ];
 
