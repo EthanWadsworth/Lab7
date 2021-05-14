@@ -33,13 +33,26 @@ self.addEventListener('activate', event => {
     event.waitUntil(clients.claim());
 });
 
-self.addEventListener('fetch', function(event) {
-    console.log(event.request.url);
+// self.addEventListener('fetch', function(event) {
+//     console.log(event.request.url);
+//     event.respondWith(
+//         caches.match(event.request)
+//         .then(function(response) {
+//             return response || fetch(event.request)
+//         }
+//         )
+//     );
+// });
+
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-        .then(function(response) {
-            return response || fetch(event.request);
-        }
-        )
+      caches.match(event.request).then((resp) => {
+        return resp || fetch(event.request).then((response) => {
+          return caches.open('v1').then((cache) => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        });
+      })
     );
 });
