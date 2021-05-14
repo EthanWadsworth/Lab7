@@ -11,6 +11,10 @@ var urlsToCache = [
     'https://ethanwadsworth.github.io/Lab7/scripts/router.js',
     'https://ethanwadsworth.github.io/Lab7/scripts/script.js',
     'https://ethanwadsworth.github.io/Lab7/sw.js',
+    'https://ethanwadsworth.github.io/Lab7/settings.svg',
+    'https://ethanwadsworth.github.io/Lab7/style.css',
+    'https://ethanwadsworth.github.io/Lab7/components/entry-page.js',
+    'https://ethanwadsworth.github.io/Lab7/components/journal-entry.js',
     'https://cse110lab6.herokuapp.com/entries'
 ];
 
