@@ -6,7 +6,9 @@
 //   - One for fetch requests
 
 var CACHE_NAME = 'v1';
-var urlsToCache = [];
+var urlsToCache = [
+    'https://cse110lab6.herokuapp.com/entries'
+];
 
 self.addEventListener('install', function(event) {
   // Perform install steps
