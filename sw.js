@@ -19,7 +19,6 @@ if ('serviceWorker' in navigator) {
 
 var CACHE_NAME = 'v1';
 var urlsToCache = [
-    '/',
     '/Lab',
     // 'https://ethanwadsworth.github.io/Lab7/',
     // 'https://ethanwadsworth.github.io/Lab7/scripts/router.js',
