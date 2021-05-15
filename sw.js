@@ -15,7 +15,9 @@ var urlsToCache = [
     'https://ethanwadsworth.github.io/Lab7/style.css',
     'https://ethanwadsworth.github.io/Lab7/components/entry-page.js',
     'https://ethanwadsworth.github.io/Lab7/components/journal-entry.js',
-    'https://cse110lab6.herokuapp.com/entries'
+    'https://cse110lab6.herokuapp.com/entries',
+    "https://drive.google.com/uc?export=download&id=1luYh909US7ZBFe6uo440Vv_LNnRdnErT",
+    "https://drive.google.com/uc?export=download&id=1Orwnly-OMhNt83tb-SAWt6Y3S6AYQgkk"
 ];
 
 self.addEventListener('install', function(event) {
