@@ -28,8 +28,6 @@ var urlsToCache = [
     'https://ethanwadsworth.github.io/Lab7/components/entry-page.js',
     'https://ethanwadsworth.github.io/Lab7/components/journal-entry.js',
     'https://cse110lab6.herokuapp.com/entries'
-    // "https://drive.google.com/uc?export=download&id=1luYh909US7ZBFe6uo440Vv_LNnRdnErT",
-    // "https://drive.google.com/uc?export=download&id=1Orwnly-OMhNt83tb-SAWt6Y3S6AYQgkk"
 ];
 
 self.addEventListener('install', function(event) {
@@ -43,38 +41,11 @@ self.addEventListener('install', function(event) {
   );
 });
 
-// self.addEventListener('fetch', function(event) {
-//     console.log(event.request.url);
-//     event.respondWith(
-//         caches.match(event.request)
-//         .then(function(response) {
-//             return response || fetch(event.request)
-//         }
-//         )
-//     );
-// });
-
-// self.addEventListener('fetch', function(event) {
-//   event.respondWith(
-//     caches.match(event.request)
-//       .then(function(response) {
-//         // Cache hit - return response
-//         if (response) {
-//           return response;
-//         }
-//         return fetch(event.request);
-//       }
-//     )
-//   );
-// });
-
 self.addEventListener('fetch', (event) => {
     event.respondWith(
       caches.match(event.request).then((resp) => {
-        console.log("resp: ", resp);
         return resp || fetch(event.request).then((response) => {
           return caches.open('v1').then((cache) => {
-            console.log("response: ", response);
             cache.put(event.request, response.clone());
             return response;
           });
@@ -82,45 +53,6 @@ self.addEventListener('fetch', (event) => {
       })
     );
 });
-
-// console.log("here");
-// self.addEventListener('fetch', function(event) {
-//   event.respondWith(
-//     caches.match(event.request)
-//       .then(function(response) {
-//         // Cache hit - return response
-//         if (response) {
-//           console.log("response is: ", response);
-//           return response;
-//         }
-
-//         return fetch(event.request).then(
-//           function(response) {
-//             // Check if we received a valid response
-//             if(!response || response.status !== 200 || response.type !== 'basic') {
-//               console.log("response here is: ", response);
-//               return response;
-//             }
-
-//             // IMPORTANT: Clone the response. A response is a stream
-//             // and because we want the browser to consume the response
-//             // as well as the cache consuming the response, we need
-//             // to clone it so we have two streams.
-//             var responseToCache = response.clone();
-
-//             console.log("open up cache");
-//             caches.open(CACHE_NAME)
-//               .then(function(cache) {
-//                 cache.put(event.request, responseToCache);
-//               });
-
-//             console.log("got to end");
-//             return response;
-//           }
-//         );
-//       })
-//     );
-// });
 
 self.addEventListener('activate', event => {
   event.waitUntil(clients.claim());
