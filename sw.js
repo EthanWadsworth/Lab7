@@ -71,12 +71,14 @@ self.addEventListener('activate', event => {
 //     );
 // });
 
+console.log("here");
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         // Cache hit - return response
         if (response) {
+          console.log("response is: ", response);
           return response;
         }
 
@@ -84,6 +86,7 @@ self.addEventListener('fetch', function(event) {
           function(response) {
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
+              console.log("response here is: ", response);
               return response;
             }
 
@@ -98,6 +101,7 @@ self.addEventListener('fetch', function(event) {
                 cache.put(event.request, responseToCache);
               });
 
+            console.log("got to end");
             return response;
           }
         );
