@@ -95,10 +95,10 @@ self.addEventListener('fetch', function(event) {
 
             caches.open(CACHE_NAME)
               .then(function(cache) {
-                cache.put(event.request, response);
+                cache.put(event.request, responseToCache);
               });
 
-            return responseToCache;
+            return response;
           }
         );
       })
