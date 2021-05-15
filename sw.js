@@ -5,19 +5,33 @@
 //   - One for activation ( check out MDN's clients.claim() for this step )
 //   - One for fetch requests
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 var CACHE_NAME = 'v1';
 var urlsToCache = [
-    'https://ethanwadsworth.github.io/Lab7/',
-    'https://ethanwadsworth.github.io/Lab7/scripts/router.js',
-    'https://ethanwadsworth.github.io/Lab7/scripts/script.js',
-    'https://ethanwadsworth.github.io/Lab7/sw.js',
-    'https://ethanwadsworth.github.io/Lab7/settings.svg',
-    'https://ethanwadsworth.github.io/Lab7/style.css',
-    'https://ethanwadsworth.github.io/Lab7/components/entry-page.js',
-    'https://ethanwadsworth.github.io/Lab7/components/journal-entry.js',
-    'https://cse110lab6.herokuapp.com/entries',
-    "https://drive.google.com/uc?export=download&id=1luYh909US7ZBFe6uo440Vv_LNnRdnErT",
-    "https://drive.google.com/uc?export=download&id=1Orwnly-OMhNt83tb-SAWt6Y3S6AYQgkk"
+    '/',
+    '/Lab',
+    // 'https://ethanwadsworth.github.io/Lab7/',
+    // 'https://ethanwadsworth.github.io/Lab7/scripts/router.js',
+    // 'https://ethanwadsworth.github.io/Lab7/scripts/script.js',
+    // 'https://ethanwadsworth.github.io/Lab7/sw.js',
+    // 'https://ethanwadsworth.github.io/Lab7/settings.svg',
+    // 'https://ethanwadsworth.github.io/Lab7/style.css',
+    // 'https://ethanwadsworth.github.io/Lab7/components/entry-page.js',
+    // 'https://ethanwadsworth.github.io/Lab7/components/journal-entry.js',
+    'https://cse110lab6.herokuapp.com/entries'
+    // "https://drive.google.com/uc?export=download&id=1luYh909US7ZBFe6uo440Vv_LNnRdnErT",
+    // "https://drive.google.com/uc?export=download&id=1Orwnly-OMhNt83tb-SAWt6Y3S6AYQgkk"
 ];
 
 self.addEventListener('install', function(event) {
@@ -29,10 +43,6 @@ self.addEventListener('install', function(event) {
         return cache.addAll(urlsToCache);
       })
   );
-});
-
-self.addEventListener('activate', event => {
-    event.waitUntil(clients.claim());
 });
 
 // self.addEventListener('fetch', function(event) {
@@ -113,3 +123,7 @@ self.addEventListener('fetch', (event) => {
 //       })
 //     );
 // });
+
+self.addEventListener('activate', event => {
+  event.waitUntil(clients.claim());
+});
